@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Models\ServiceProvider  as Model;
-use App\Http\Resources\Admin\ServiceProviderListResource  as ListResource;
-use App\Http\Resources\Admin\ServiceProviderSingleResource  as SingleResource;
-use App\Http\Requests\Admin\ServiceProviderCreateRequest as CreateRequest;
-use App\Http\Requests\Admin\ServiceProviderUpdateRequest  as UpdateRequest;
+use App\Models\Service  as Model;
+use App\Http\Resources\Admin\ServiceListResource  as ListResource;
+use App\Http\Resources\Admin\ServiceSingleResource  as SingleResource;
+use App\Http\Requests\Admin\ServiceCreateRequest  as CreateRequest;
+use App\Http\Requests\Admin\ServiceUpdateRequest  as UpdateRequest;
 use Illuminate\Http\Response;
 
-class ServiceProviderController extends Controller
+class ServiceController extends Controller
 {
     /**
     * Get All Records
@@ -72,16 +72,13 @@ class ServiceProviderController extends Controller
     {
         try {
             $record = Model::create([
-              //type model fields ex('name' => $request->name)
-              'name_ar'=>$request->name_ar,
-              'name_en'=>$request->name_en,
-              'address'=>$request->address,
-              'logo'=>$request->logo,
-              'lat'=>$request->lat,
-              'long'=>$request->long,
-              'category_id'=>$request->category_id,
-
-
+                'name_en'=>$request->name_en,
+                'name_ar'=>$request->name_ar,
+                'description_en'=>$request->description_en,
+                'description_ar'=>$request->description_ar,
+                'image'=>$request->image,
+                'price'=>$request->price,
+                'service_provider_id'=>$request->service_provider_id,
             ]);
             return response()->json([
                 'message' => 'Created Successfully',
@@ -105,16 +102,13 @@ class ServiceProviderController extends Controller
             $record = Model::find($id);
             if ($record){
                 $record->update([
-                    //type model fields ex('name' => $request->name)
-                    'name_ar'=>$request->name_ar,
                     'name_en'=>$request->name_en,
-                    'address'=>$request->address,
-                    'logo'=>$request->logo,
-                    'lat'=>$request->lat,
-                    'long'=>$request->long,
-                    'category_id'=>$request->category_id,
-                    'logo'=>$request->logo,
-
+                    'name_ar'=>$request->name_ar,
+                    'description_en'=>$request->description_en,
+                    'description_ar'=>$request->description_ar,
+                    'image'=>$request->image,
+                    'price'=>$request->price,
+                    'service_provider_id'=>$request->service_provider_id,
                 ]);
                 return response()->json([
                     'message' => 'Updated Successfully',
