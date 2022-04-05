@@ -9,5 +9,11 @@ class Category extends Model
 {
     use SoftDeletes;
     protected $guarded = [];
-    
+
+
+    public function service_povides()
+    {
+        return $this->hasMany(ServiceProvider::class,'category_id');
+    }
+
 }
