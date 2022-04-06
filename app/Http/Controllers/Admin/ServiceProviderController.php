@@ -71,12 +71,17 @@ class ServiceProviderController extends Controller
     public function store(CreateRequest $request)
     {
         try {
+            if($request->hasFile('logo')) {
+                $file = $request->file('logo');
+                $fileName = date('YmdHi').$file->getClientOriginalName();
+                $file->move(public_path('uploads/admin/serviceProvider'),$fileName);
+            }
             $record = Model::create([
               //type model fields ex('name' => $request->name)
               'name_ar'=>$request->name_ar,
               'name_en'=>$request->name_en,
               'address'=>$request->address,
-              'logo'=>$request->logo,
+              'logo'=>$fileName,
               'lat'=>$request->lat,
               'long'=>$request->long,
               'category_id'=>$request->category_id,
@@ -104,12 +109,19 @@ class ServiceProviderController extends Controller
         try {
             $record = Model::find($id);
             if ($record){
+                if($request->hasFile('logo')) {
+                    $file = $request->file('logo');
+                    @unlink(public_path('uploads/admin/serviceProvider/'.$record->logo));
+                    $fileName = date('YmdHi').$file->getClientOriginalName();
+                    $file->move(public_path('uploads/admin/serviceProvider'),$fileName);
+                    $record->logo = $fileName;
+                }
                 $record->update([
                     //type model fields ex('name' => $request->name)
                     'name_ar'=>$request->name_ar,
                     'name_en'=>$request->name_en,
                     'address'=>$request->address,
-                    'logo'=>$request->logo,
+                    'logo'=>$fileName,
                     'lat'=>$request->lat,
                     'long'=>$request->long,
                     'category_id'=>$request->category_id,
@@ -142,6 +154,7 @@ class ServiceProviderController extends Controller
         try {
             $record = Model::find($id);
             if ($record){
+                @unlink(public_path('uploads/admin/serviceProvider/'.$record->logo));
                 $record->delete();
                 return response()->json([
                     'message' => 'Deleted Successfully',

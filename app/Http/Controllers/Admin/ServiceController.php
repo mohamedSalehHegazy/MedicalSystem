@@ -71,12 +71,17 @@ class ServiceController extends Controller
     public function store(CreateRequest $request)
     {
         try {
+            if($request->hasFile('image')) {
+                $file = $request->file('image');
+                $fileName = date('YmdHi').$file->getClientOriginalName();
+                $file->move(public_path('uploads/admin/service'),$fileName);
+            }
             $record = Model::create([
                 'name_en'=>$request->name_en,
                 'name_ar'=>$request->name_ar,
                 'description_en'=>$request->description_en,
                 'description_ar'=>$request->description_ar,
-                'image'=>$request->image,
+                'image'=>$fileName,
                 'price'=>$request->price,
                 'service_provider_id'=>$request->service_provider_id,
             ]);
@@ -101,12 +106,19 @@ class ServiceController extends Controller
         try {
             $record = Model::find($id);
             if ($record){
+                if($request->hasFile('image')) {
+                    $file = $request->file('image');
+                    @unlink(public_path('uploads/admin/service/'.$record->image));
+                    $fileName = date('YmdHi').$file->getClientOriginalName();
+                    $file->move(public_path('uploads/admin/service'),$fileName);
+                    $record->image = $fileName;
+                }
                 $record->update([
                     'name_en'=>$request->name_en,
                     'name_ar'=>$request->name_ar,
                     'description_en'=>$request->description_en,
                     'description_ar'=>$request->description_ar,
-                    'image'=>$request->image,
+                    'image'=>$fileName,
                     'price'=>$request->price,
                     'service_provider_id'=>$request->service_provider_id,
                 ]);
@@ -136,6 +148,8 @@ class ServiceController extends Controller
         try {
             $record = Model::find($id);
             if ($record){
+                @unlink(public_path('uploads/admin/service/'.$record->image));
+
                 $record->delete();
                 return response()->json([
                     'message' => 'Deleted Successfully',
