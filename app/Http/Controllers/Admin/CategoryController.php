@@ -17,7 +17,7 @@ class CategoryController extends Controller
 {
     /**
     * Get All Records
-    * @return \Illuminate\Http\JsonResponse 
+    * @return \Illuminate\Http\JsonResponse
     */
 
     public function index()
@@ -39,7 +39,7 @@ class CategoryController extends Controller
     /**
     * Get Single Record
     * @param $id
-    * @return \Illuminate\Http\JsonResponse 
+    * @return \Illuminate\Http\JsonResponse
     */
     public function show($id)
     {
@@ -53,7 +53,7 @@ class CategoryController extends Controller
             }else {
                return response()->json([
                    'message' => 'Not Found !'
-               ],response::HTTP_BAD_REQUEST); 
+               ],response::HTTP_BAD_REQUEST);
             }
         } catch (\Throwable $th) {
             Log::error($th);
@@ -72,10 +72,15 @@ class CategoryController extends Controller
     public function store(CreateRequest $request)
     {
         try {
+            if($request->hasFile('icon')) {
+                $file = $request->file('icon');
+                $fileName = date('YmdHi').$file->getClientOriginalName();
+                $file->move(public_path('uploads/admin/category'),$fileName);
+            }
             Model::create([
               'name_en' => $request->name_en,
               'name_ar' => $request->name_ar,
-              'icon' => $request->icon,
+              'icon' => $fileName,
             ]);
             return response()->json([
                 'message' => 'Created Successfully',
@@ -97,19 +102,26 @@ class CategoryController extends Controller
     {
         try {
             $record = Model::find($id);
-             if ($record){
+            if ($record){
+                if($request->hasFile('icon')) {
+                    $file = $request->file('icon');
+                    @unlink(public_path('uploads/admin/category/'.$record->icon));
+                    $fileName = date('YmdHi').$file->getClientOriginalName();
+                    $file->move(public_path('uploads/admin/category'),$fileName);
+                    $record->icon = $fileName;
+                }
                 $record->update([
                     'name_en' => $request->name_en,
                     'name_ar' => $request->name_ar,
-                    'icon' => $request->icon,
+                    'icon' => $fileName,
                 ]);
                 return response()->json([
                     'message' => 'Updated Successfully',
                 ]);
             }else {
-               return response()->json([
-                   'message' => 'Not Found !'
-               ],response::HTTP_BAD_REQUEST); 
+            return response()->json([
+                'message' => 'Not Found !'
+            ],response::HTTP_BAD_REQUEST);
             }
         } catch (\Throwable $th) {
             Log::error($th);
@@ -129,14 +141,15 @@ class CategoryController extends Controller
         try {
             $record = Model::find($id);
             if ($record){
+                @unlink(public_path('uploads/admin/category/'.$record->icon));
                 $record->delete();
                 return response()->json([
                     'message' => 'Deleted Successfully',
                 ]);
             }else {
-               return response()->json([
-                   'message' => 'Not Found !'
-               ],response::HTTP_BAD_REQUEST); 
+            return response()->json([
+                'message' => 'Not Found !'
+            ],response::HTTP_BAD_REQUEST);
             }
         } catch (\Throwable $th) {
             Log::error($th);
@@ -164,7 +177,7 @@ class CategoryController extends Controller
             }else {
                return response()->json([
                    'message' => 'Not Found !'
-               ],response::HTTP_BAD_REQUEST); 
+               ],response::HTTP_BAD_REQUEST);
             }
         } catch (\Throwable $th) {
             Log::error($th);
@@ -194,7 +207,7 @@ class CategoryController extends Controller
             }else {
                return response()->json([
                    'message' => 'Not Found !'
-               ],response::HTTP_BAD_REQUEST); 
+               ],response::HTTP_BAD_REQUEST);
             }
         } catch (\Throwable $th) {
             Log::error($th);
@@ -221,9 +234,9 @@ class CategoryController extends Controller
                     'message' => 'Statues Changed Successfully',
                 ]);
             }else {
-               return response()->json([
-                   'message' => 'Not Found !'
-               ],response::HTTP_BAD_REQUEST); 
+            return response()->json([
+                'message' => 'Not Found !'
+            ],response::HTTP_BAD_REQUEST);
             }
         } catch (\Throwable $th) {
             Log::error($th);
