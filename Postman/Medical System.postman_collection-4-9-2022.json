@@ -1,0 +1,1487 @@
+{
+	"info": {
+		"_postman_id": "eac95cc2-20bc-40eb-ad9d-ff3117a66198",
+		"name": "Medical System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "List",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hZG1pblwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDk1MDY2MjksImV4cCI6MTY0OTUxMDIyOSwibmJmIjoxNjQ5NTA2NjI5LCJqdGkiOiI1SDJMS2VySHN5OXZyTHF2Iiwic3ViIjoxLCJwcnYiOiJkZjg4M2RiOTdiZDA1ZWY4ZmY4NTA4MmQ2ODZjNDVlODMyZTU5M2E5In0.bhgOYwZiUM2JByLEFa2HesdzwRI53y8Po1dSAgjn9mg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}admin/categories",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}admin/categories",
+											"host": [
+												"{{base_url}}admin"
+											],
+											"path": [
+												"categories"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 02 Apr 2022 14:24:55 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 02 Apr 2022 14:24:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.3"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"؛Pharamacies\",\n            \"icon\": \"pharma.jpg\",\n            \"need_delivery\": 0\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Scan\",\n            \"icon\": \"sacn.jpg\",\n            \"need_delivery\": 0\n        }\n    ]\n}"
+								},
+								{
+									"name": "List",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}admin/categories",
+											"host": [
+												"{{base_url}}admin"
+											],
+											"path": [
+												"categories"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 02 Apr 2022 14:41:12 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 02 Apr 2022 14:41:12 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.3"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"Scan\",\n            \"icon\": \"scan.jpg\",\n            \"need_delivery\": false,\n            \"active\": true\n        },\n        {\n            \"id\": 1,\n            \"name\": \"؛Pharamacies\",\n            \"icon\": \"pharma.jpg\",\n            \"need_delivery\": false,\n            \"active\": true\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Add",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name_en",
+											"value": "sss",
+											"type": "text"
+										},
+										{
+											"key": "name_ar",
+											"value": "sss",
+											"type": "text"
+										},
+										{
+											"key": "icon",
+											"type": "file",
+											"src": "/C:/Users/abdallah/Desktop/avatar.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}admin/categories",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Add",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name_en\":\"Scan\",\n    \"name_ar\":\"أشعه\",\n    \"icon\":\"sacn.jpg\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}admin/categories",
+											"host": [
+												"{{base_url}}admin"
+											],
+											"path": [
+												"categories"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 02 Apr 2022 14:10:01 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 02 Apr 2022 14:10:01 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.3"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created Successfully\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Single",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}admin/categories/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"categories",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Single",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}admin/categories/1",
+											"host": [
+												"{{base_url}}admin"
+											],
+											"path": [
+												"categories",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 02 Apr 2022 14:41:28 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 02 Apr 2022 14:41:28 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.3"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"؛Pharamacies\",\n        \"icon\": \"pharma.jpg\",\n        \"need_delivery\": false,\n        \"active\": true,\n        \"created_at\": \"2022-04-02T14:39:33.000000Z\",\n        \"updated_at\": \"2022-04-02T14:39:33.000000Z\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Edit",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name_ar",
+											"value": "sdsd",
+											"type": "text"
+										},
+										{
+											"key": "name_en",
+											"value": "vdrvd",
+											"type": "text"
+										},
+										{
+											"key": "icon",
+											"type": "file",
+											"src": "/C:/Users/abdallah/Desktop/avatar.png"
+										},
+										{
+											"key": "method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}admin/categories/2",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"categories",
+										"2"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Edit",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name_en\":\"Pharamacies\",\n    \"name_ar\":\"صيدليات\",\n    \"icon\":\"pharma.jpg\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}admin/categories/1",
+											"host": [
+												"{{base_url}}admin"
+											],
+											"path": [
+												"categories",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 02 Apr 2022 14:43:15 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 02 Apr 2022 14:43:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.3"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Updated Successfully\"\n}"
+								}
+							]
+						},
+						{
+							"name": "changeStatues",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}admin/categories/changeStatues/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"categories",
+										"changeStatues",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Change Delivery Statues",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}admin/categories/changeDeliveryStatues/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"categories",
+										"changeDeliveryStatues",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Restore",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}admin/categories/restore/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"categories",
+										"restore",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}admin/categories/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"categories",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ServiceProvider",
+					"item": [
+						{
+							"name": "List",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}admin/serviceProvider",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"serviceProvider"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}admin/serviceProvider",
+											"host": [
+												"{{base_url}}admin"
+											],
+											"path": [
+												"serviceProvider"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 05 Apr 2022 08:57:26 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 05 Apr 2022 08:57:26 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"seRviceProvider\",\n            \"logo\": \"scan.jpg\",\n            \"active\": true,\n            \"address\": \"cairo\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Add",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name_en",
+											"value": "seRviceProvider",
+											"type": "text"
+										},
+										{
+											"key": "name_ar",
+											"value": "مقدم الخدمه",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "cairo",
+											"type": "text"
+										},
+										{
+											"key": "lat",
+											"value": "2545222",
+											"type": "text"
+										},
+										{
+											"key": "long",
+											"value": "211441",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"type": "file",
+											"src": "/C:/Users/abdallah/Desktop/avatar.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}admin/serviceProvider",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"serviceProvider"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Add",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name_en\":\"seRviceProvider\",\n    \"name_ar\":\"مقدم خدمه\",\n    \"logo\":\"scan.jpg\",\n    \"address\":\"cairo\",\n    \"lat\":\"2545222\",\n    \"long\":\"211441\",\n    \"category_id\":\"1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}admin/serviceProvider",
+											"host": [
+												"{{base_url}}admin"
+											],
+											"path": [
+												"serviceProvider"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 05 Apr 2022 08:56:20 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 05 Apr 2022 08:56:20 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created Successfully\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Single",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}admin/serviceProvider/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"serviceProvider",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Single",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{base_url}}admin/serviceProvider/1",
+											"host": [
+												"{{base_url}}admin"
+											],
+											"path": [
+												"serviceProvider",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 05 Apr 2022 09:01:59 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 05 Apr 2022 09:01:59 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"seRviceProvider\",\n        \"logo\": \"scan.jpg\",\n        \"active\": true,\n        \"address\": \"cairo\",\n        \"lat\": 2545222,\n        \"long\": 211441,\n        \"category_name\": [\n            {\n                \"name_en\": \"Scan\"\n            }\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Edit",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name_en",
+											"value": "seRviceProvider",
+											"type": "text"
+										},
+										{
+											"key": "name_ar",
+											"value": "مقدم الخدمه",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"type": "file",
+											"src": "/C:/Users/abdallah/Desktop/avatar.png"
+										},
+										{
+											"key": "address",
+											"value": "cairo",
+											"type": "text"
+										},
+										{
+											"key": "lat",
+											"value": "2545222",
+											"type": "text"
+										},
+										{
+											"key": "long",
+											"value": "211441",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}admin/serviceProvider/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"serviceProvider",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changeStatues",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}admin/serviceProvider/changeStatues/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"serviceProvider",
+										"changeStatues",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Restore",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}admin/serviceProvider/restore/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"serviceProvider",
+										"restore",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}admin/serviceProvider/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"serviceProvider",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Service",
+					"item": [
+						{
+							"name": "List",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}admin/service",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"service"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name_en",
+											"value": "checkup",
+											"type": "text"
+										},
+										{
+											"key": "name_ar",
+											"value": "كشف",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/abdallah/Desktop/avatar.png"
+										},
+										{
+											"key": "description_en",
+											"value": "description",
+											"type": "text"
+										},
+										{
+											"key": "description_ar",
+											"value": "تفاصيل",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "200",
+											"type": "text"
+										},
+										{
+											"key": "service_provider_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}admin/service",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"service"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Add",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name_en\":\"checkup\",\n    \"name_ar\":\"كشف\",\n    \"image\":\"scan.jpg\",\n    \"description_en\":\"description\",\n    \"description_ar\":\"تفاصيل\",\n    \"price\":200,\n    \"service_provider_id\":\"1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}admin/service",
+											"host": [
+												"{{base_url}}admin"
+											],
+											"path": [
+												"service"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 05 Apr 2022 20:40:30 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 05 Apr 2022 20:40:30 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Created Successfully\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Single",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}admin/service/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"service",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Single",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}admin/service/1",
+											"host": [
+												"{{base_url}}admin"
+											],
+											"path": [
+												"service",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 05 Apr 2022 20:41:44 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 05 Apr 2022 20:41:44 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"checkup\",\n        \"description\": \"description\",\n        \"active\": true,\n        \"image\": \"scan.jpg\",\n        \"price\": 200,\n        \"service_provider_name\": {\n            \"name_en\": \"seRviceProvider\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Edit",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name_en",
+											"value": "checkup",
+											"type": "text"
+										},
+										{
+											"key": "name_ar",
+											"value": "كشف",
+											"type": "text"
+										},
+										{
+											"key": "description_en",
+											"value": "description",
+											"type": "text"
+										},
+										{
+											"key": "description_ar",
+											"value": "تفاصيل",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "200",
+											"type": "text"
+										},
+										{
+											"key": "service_provider_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/abdallah/Desktop/avatar.png"
+										},
+										{
+											"key": "method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}admin/service/2",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"service",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changeStatues",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}admin/service/changeStatues/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"service",
+										"changeStatues",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Restore",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}admin/service/restore/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"service",
+										"restore",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}admin/service/1",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"service",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "adminLogout",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}admin/auth/logout",
+									"host": [
+										"{{base_url}}admin"
+									],
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "adminLogin",
+							"request": {
+								"method": "POST",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": []
+		}
+	]
+}

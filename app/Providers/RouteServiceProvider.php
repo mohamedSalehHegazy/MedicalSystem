@@ -50,6 +50,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapGeneralRoutes()
     {
         Route::prefix('api')->group(base_path('routes/api.php'));
+        Route::prefix('api')->group(base_path('routes/auth.php'));
+
         Route::prefix('web')->middleware('api')->group(base_path('routes/web.php'));
     }
 
@@ -62,6 +64,7 @@ class RouteServiceProvider extends ServiceProvider
         for ($i = 0; $i < count($webFiles); $i++) {
             Route::prefix('api/admin/')
                 ->middleware('api')
+                ->middleware('auth:admin')
                 ->group($webFiles[$i]);
         }
     }

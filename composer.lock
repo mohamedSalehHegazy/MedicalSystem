@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b4bb1d6cf2cb4e0d017d4adcb632b2de",
+    "content-hash": "f652fb5177ee4b246111463c0d62d7c7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3231,18 +3231,6 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-<<<<<<< HEAD
-            "version": "v3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "26954b3d62a6c5fd0ea8a2a00c0353a14978d05c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/26954b3d62a6c5fd0ea8a2a00c0353a14978d05c",
-                "reference": "26954b3d62a6c5fd0ea8a2a00c0353a14978d05c",
-=======
             "version": "v2.5.1",
             "source": {
                 "type": "git",
@@ -3253,7 +3241,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/e8b495ea28c1d97b5e0c121748d6f9b53d075c66",
                 "reference": "e8b495ea28c1d97b5e0c121748d6f9b53d075c66",
->>>>>>> 8f6bf5614acad45805de8ae35066e8b442f61cd6
                 "shasum": ""
             },
             "require": {
@@ -3291,11 +3278,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.0.1"
-=======
                 "source": "https://github.com/symfony/deprecation-contracts/tree/v2.5.1"
->>>>>>> 8f6bf5614acad45805de8ae35066e8b442f61cd6
             },
             "funding": [
                 {
@@ -3311,11 +3294,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2022-01-02T09:55:41+00:00"
-=======
             "time": "2022-01-02T09:53:40+00:00"
->>>>>>> 8f6bf5614acad45805de8ae35066e8b442f61cd6
         },
         {
             "name": "symfony/error-handler",
@@ -5188,18 +5167,6 @@
         },
         {
             "name": "symfony/translation-contracts",
-<<<<<<< HEAD
-            "version": "v3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "c4183fc3ef0f0510893cbeedc7718fb5cafc9ac9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/c4183fc3ef0f0510893cbeedc7718fb5cafc9ac9",
-                "reference": "c4183fc3ef0f0510893cbeedc7718fb5cafc9ac9",
-=======
             "version": "v2.5.1",
             "source": {
                 "type": "git",
@@ -5210,7 +5177,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/1211df0afa701e45a04253110e959d4af4ef0f07",
                 "reference": "1211df0afa701e45a04253110e959d4af4ef0f07",
->>>>>>> 8f6bf5614acad45805de8ae35066e8b442f61cd6
                 "shasum": ""
             },
             "require": {
@@ -5259,11 +5225,7 @@
                 "standards"
             ],
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/symfony/translation-contracts/tree/v3.0.1"
-=======
                 "source": "https://github.com/symfony/translation-contracts/tree/v2.5.1"
->>>>>>> 8f6bf5614acad45805de8ae35066e8b442f61cd6
             },
             "funding": [
                 {
@@ -5279,11 +5241,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2022-01-02T09:55:41+00:00"
-=======
             "time": "2022-01-02T09:53:40+00:00"
->>>>>>> 8f6bf5614acad45805de8ae35066e8b442f61cd6
         },
         {
             "name": "symfony/var-dumper",
@@ -8238,7 +8196,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4|^8.0"
+        "php": "^7.3|^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"
