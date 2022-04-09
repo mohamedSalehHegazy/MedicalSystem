@@ -72,11 +72,11 @@ class DeliveryController extends Controller
         try {
             $record = Model::create([
               //type model fields ex('name' => $request->name)
-              'name'=>$request->name,
-              'address'=>$request->address,
-              'phone'=>$request->phone,
-              'lat'=>$request->lat,
-              'long'=>$request->long,
+                'name'=>$request->name,
+                'address'=>$request->address,
+                'phone'=>$request->phone,
+                'lat'=>$request->lat,
+                'long'=>$request->long,
 
 
             ]);
