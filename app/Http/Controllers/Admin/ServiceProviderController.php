@@ -74,7 +74,7 @@ class ServiceProviderController extends Controller
             if($request->hasFile('logo')) {
                 $file = $request->file('logo');
                 $fileName = date('YmdHi').$file->getClientOriginalName();
-                $file->move(public_path('uploads/admin/serviceProvider'),$fileName);
+                $file->move(public_path('uploads/serviceProvider'),$fileName);
             }
             $record = Model::create([
               //type model fields ex('name' => $request->name)
@@ -111,9 +111,9 @@ class ServiceProviderController extends Controller
             if ($record){
                 if($request->hasFile('logo')) {
                     $file = $request->file('logo');
-                    @unlink(public_path('uploads/admin/serviceProvider/'.$record->logo));
+                    @unlink(public_path('uploads/serviceProvider/'.$record->logo));
                     $fileName = date('YmdHi').$file->getClientOriginalName();
-                    $file->move(public_path('uploads/admin/serviceProvider'),$fileName);
+                    $file->move(public_path('uploads/serviceProvider'),$fileName);
                     $record->logo = $fileName;
                 }
                 $record->update([
@@ -154,7 +154,7 @@ class ServiceProviderController extends Controller
         try {
             $record = Model::find($id);
             if ($record){
-                @unlink(public_path('uploads/admin/serviceProvider/'.$record->logo));
+                @unlink(public_path('uploads/serviceProvider/'.$record->logo));
                 $record->delete();
                 return response()->json([
                     'message' => 'Deleted Successfully',

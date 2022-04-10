@@ -74,7 +74,7 @@ class ServiceController extends Controller
             if($request->hasFile('image')) {
                 $file = $request->file('image');
                 $fileName = date('YmdHi').$file->getClientOriginalName();
-                $file->move(public_path('uploads/admin/service'),$fileName);
+                $file->move(public_path('uploads/service'),$fileName);
             }
             $record = Model::create([
                 'name_en'=>$request->name_en,
@@ -108,9 +108,9 @@ class ServiceController extends Controller
             if ($record){
                 if($request->hasFile('image')) {
                     $file = $request->file('image');
-                    @unlink(public_path('uploads/admin/service/'.$record->image));
+                    @unlink(public_path('uploads/service/'.$record->image));
                     $fileName = date('YmdHi').$file->getClientOriginalName();
-                    $file->move(public_path('uploads/admin/service'),$fileName);
+                    $file->move(public_path('uploads/service'),$fileName);
                     $record->image = $fileName;
                 }
                 $record->update([
@@ -148,7 +148,7 @@ class ServiceController extends Controller
         try {
             $record = Model::find($id);
             if ($record){
-                @unlink(public_path('uploads/admin/service/'.$record->image));
+                @unlink(public_path('uploads/service/'.$record->image));
 
                 $record->delete();
                 return response()->json([

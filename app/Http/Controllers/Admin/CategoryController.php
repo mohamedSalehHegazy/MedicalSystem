@@ -75,7 +75,7 @@ class CategoryController extends Controller
             if($request->hasFile('icon')) {
                 $file = $request->file('icon');
                 $fileName = date('YmdHi').$file->getClientOriginalName();
-                $file->move(public_path('uploads/admin/category'),$fileName);
+                $file->move(public_path('uploads/category'),$fileName);
             }
             Model::create([
               'name_en' => $request->name_en,
@@ -105,9 +105,9 @@ class CategoryController extends Controller
             if ($record){
                 if($request->hasFile('icon')) {
                     $file = $request->file('icon');
-                    @unlink(public_path('uploads/admin/category/'.$record->icon));
+                    @unlink(public_path('uploads/category/'.$record->icon));
                     $fileName = date('YmdHi').$file->getClientOriginalName();
-                    $file->move(public_path('uploads/admin/category'),$fileName);
+                    $file->move(public_path('uploads/category'),$fileName);
                     $record->icon = $fileName;
                 }
                 $record->update([
@@ -141,7 +141,7 @@ class CategoryController extends Controller
         try {
             $record = Model::find($id);
             if ($record){
-                @unlink(public_path('uploads/admin/category/'.$record->icon));
+                @unlink(public_path('uploads/category/'.$record->icon));
                 $record->delete();
                 return response()->json([
                     'message' => 'Deleted Successfully',
