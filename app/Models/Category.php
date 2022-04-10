@@ -19,7 +19,7 @@ class Category extends Model
 
     public function getIconAttribute($value)
     {
-        return $value = public_path('uploads/category'.$value);
+        return $value = asset('uploads/admin/category/'.$value);
     }
 
 }
