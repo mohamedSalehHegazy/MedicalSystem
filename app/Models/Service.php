@@ -18,7 +18,7 @@ class Service extends Model
     }
        public function getLogoAttribute($value)
     {
-        return $value = asset('uploads/serviceProvider/'.$value);
+        return $value = asset('uploads/service/'.$value);
     }
 
 }
