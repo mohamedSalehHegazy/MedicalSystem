@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\DeliveryCreateRequest  as CreateRequest;
 use App\Http\Requests\Admin\DeliveryUpdateRequest  as UpdateRequest;
@@ -10,6 +10,8 @@ use App\Models\Delivery  as Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+
 
 class DeliveryController extends Controller
 {
@@ -77,9 +79,8 @@ class DeliveryController extends Controller
                 'phone'=>$request->phone,
                 'lat'=>$request->lat,
                 'long'=>$request->long,
-
-
             ]);
+
             return response()->json([
                 'message' => 'Created Successfully',
             ]);
