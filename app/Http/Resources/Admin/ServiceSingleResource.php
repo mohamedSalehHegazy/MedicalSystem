@@ -15,16 +15,18 @@ class ServiceSingleResource extends JsonResource
      */
     public function toArray($request)
     {
-        $name = "name_".app()->getLocale();
-        $description = "description_".app()->getLocale();
+        $serviceProvider = ServiceProvider::whereId($this->service_provider_id)->select('name_en','name_ar')->first();
         return [
             'id' => $this->id,
-            'name' => $this->$name,
-            'description'=>$this->$description,
+            'name_en' => $this->name_en,
+            'name_ar' => $this->name_ar,
+            'description_en'=>$this->description_en,
+            'description_ar'=>$this->description_ar,
             'active' => $this->active ? true : false,
             'image'=>$this->image,
             'price'=>$this->price,
-            'service_provider_name'=>ServiceProvider::whereId($this->service_provider_id)->first($name),
+            'service_provider_name_en'=>$serviceProvider->name_en,
+            'service_provider_name_ar'=>$serviceProvider->name_ar,
             ];
         }
 }
