@@ -36,50 +36,17 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
+
         $this->routes(function () {
-            $this->mapGeneralRoutes();
-            $this->mapAdminRoutes();
-            $this->mapClientRoutes();
+            Route::prefix('api')
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/api.php'));
+
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/web.php'));
         });
-    }
-
-
-    /**
-     * Call General Routes.
-     */
-    protected function mapGeneralRoutes()
-    {
-        Route::prefix('api')->group(base_path('routes/api.php'));
-        Route::prefix('api')->group(base_path('routes/auth.php'));
-
-        Route::prefix('web')->middleware('api')->group(base_path('routes/web.php'));
-    }
-
-    /**
-     * Call Admin Routes
-     */
-    protected function mapAdminRoutes()
-    {
-        $webFiles = glob(base_path('routes/Admin/*.php'));
-        for ($i = 0; $i < count($webFiles); $i++) {
-            Route::prefix('api/admin/')
-                ->middleware('api')
-                ->middleware('auth:admin')
-                ->group($webFiles[$i]);
-        }
-    }
-
-    /**
-     * Call Client Routes
-     */
-    protected function mapClientRoutes()
-    {
-        $webFiles = glob(base_path('routes/Client/*.php'));
-        for ($i = 0; $i < count($webFiles); $i++) {
-            Route::prefix('api/client/')
-                ->middleware('api')
-                ->group($webFiles[$i]);
-        }
     }
 
     /**

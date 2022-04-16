@@ -23,7 +23,7 @@ class CreateServiceProvidersTable extends Migration
             $table->string('logo');
             $table->unsignedBigInteger('category_id');
             $table->boolean('active')->default(1);
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
