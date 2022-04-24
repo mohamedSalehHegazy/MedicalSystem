@@ -12,23 +12,23 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
-                        <strong> Roles </strong>
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
+                        <strong> Categories </strong>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
-                        <strong> Users </strong>
+                    <x-nav-link :href="route('serviceProviders.index')" :active="request()->routeIs('serviceProviders.index')">
+                        <strong> ServiceProviders </strong>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('sellers.index')" :active="request()->routeIs('sellers.index')">
-                        <strong> Sellers </strong>
+                    <x-nav-link :href="route('services.index')" :active="request()->routeIs('services.index')">
+                        <strong> Services </strong>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('contracts.index')" :active="request()->routeIs('contracts.index')">
-                        <strong> Contracts </strong>
+                    <x-nav-link :href="route('deliveries.index')" :active="request()->routeIs('deliveries.index')">
+                        <strong> Deliveries </strong>
                     </x-nav-link>
                 </div>
             </div>
@@ -78,24 +78,24 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
-                <strong> Roles</strong>
+            <x-responsive-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
+                <strong> Categories </strong>
             </x-responsive-nav-link>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
-                <strong> Users</strong>
+            <x-responsive-nav-link :href="route('serviceProviders.index')" :active="request()->routeIs('serviceProviders.index')">
+                <strong> ServiceProviders</strong>
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('sellers.index')" :active="request()->routeIs('sellers.index')">
-                <strong> Sellers</strong>
+            <x-responsive-nav-link :href="route('services.index')" :active="request()->routeIs('services.index')">
+                <strong> Services</strong>
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('contracts.index')" :active="request()->routeIs('contracts.index')">
-                <strong> Contracts</strong>
+            <x-responsive-nav-link :href="route('deliveries.index')" :active="request()->routeIs('deliveries.index')">
+                <strong> Deliveries</strong>
             </x-responsive-nav-link>
         </div>
 

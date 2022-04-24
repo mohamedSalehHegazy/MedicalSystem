@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\CategoryCreateRequest  as UpdateRequest;
 use App\Http\Resources\Admin\CategoryListResource  as ListResource;
 use App\Http\Resources\Admin\CategorySingleResource  as SingleResource;
 use App\Models\Category  as Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class CategoriesController extends Controller
@@ -44,7 +45,7 @@ class CategoriesController extends Controller
             $record = new SingleResource($data);
                 return view($this->path.'.show',compact(['record']));
             }else {
-                 return redirect('/'.$this->path)->with('error','Not Found');
+                 return redirect('admin/'.$this->path)->with('error','Not Found');
             }
         } catch (\Throwable $th) {
             Log::error($th);
@@ -72,7 +73,7 @@ class CategoriesController extends Controller
     {
         try {
             $record = Model::create($request->all());
-            return redirect('/'.$this->path)->with('success','Created Successfully');
+            return redirect('admin/'.$this->path)->with('success','Created Successfully');
         } catch (\Throwable $th) {
             Log::error($th);
             return view('layouts.500');
@@ -85,18 +86,18 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
         try {
-           $data = Model::find($id);
+           $data = Model::find($request->id);
             if ($data){
                 return view($this->path.'.add-edit',compact(['record']));
             }else {
-                return redirect('/'.$this->path)->with('error','Not Found');
+                return redirect('admin/'.$this->path)->with('error','Not Found');
             }
         } catch (\Throwable $th) {
             Log::error($th);
-            return view('layouts.500');
+            return view('layouts.404');
         }
     }
 
@@ -111,9 +112,9 @@ class CategoriesController extends Controller
             $record = Model::find($id);
             if ($record){
                 $record->update($request->all());
-                return redirect('/'.$this->path)->with('success','Updated Successfully');
+                return redirect('admin/'.$this->path)->with('success','Updated Successfully');
             }else {
-                return redirect('/'.$this->path)->with('error','Not Found');
+                return redirect('admin/'.$this->path)->with('error','Not Found');
             }
         } catch (\Throwable $th) {
             Log::error($th);
@@ -132,9 +133,9 @@ class CategoriesController extends Controller
             $record = Model::find($id);
             if ($record){
                 $record->delete();
-                return redirect('/'.$this->path)->with('success','Deleted Successfully');
+                return redirect('admin/'.$this->path)->with('success','Deleted Successfully');
             }else {
-                return redirect('/'.$this->path)->with('error','Not Found');
+                return redirect('admin/'.$this->path)->with('error','Not Found');
             }
         } catch (\Throwable $th) {
             Log::error($th);
@@ -172,7 +173,7 @@ class CategoriesController extends Controller
                 $record->restore();
                 return redirect('/'.$this->path.'/trashed')->with('success','Restored Successfully');
             }else {
-                return redirect('/'.$this->path)->with('error','Not Found');
+                return redirect('admin/'.$this->path)->with('error','Not Found');
             }
         } catch (\Throwable $th) {
             Log::error($th);
@@ -193,9 +194,9 @@ class CategoriesController extends Controller
             if ($record){
                 $record->active = !$record->active;
                 $record->save();
-                return redirect('/'.$this->path)->with('success','Statues Changed Successfully');
+                return redirect('admin/'.$this->path)->with('success','Statues Changed Successfully');
             }else {
-                return redirect('/'.$this->path)->with('error','Not Found');
+                return redirect('admin/'.$this->path)->with('error','Not Found');
             }
         } catch (\Throwable $th) {
             Log::error($th);
