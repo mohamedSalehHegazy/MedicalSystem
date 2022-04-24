@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin/', 'middleware' => 'auth:admin'], function () {
         Route::get('/trashed', [CategoriesController::class, 'trashed'])->name('categories.trashed');
         Route::get('/{id}', [CategoriesController::class, 'show'])->name('categories.show');
         Route::post('/', [CategoriesController::class, 'store'])->name('categories.store');
-        Route::post('/{id}', [CategoriesController::class, 'update'])->name('categories.update');
+        Route::put('/{id}', [CategoriesController::class, 'update'])->name('categories.update');
         Route::delete('/{id}', [CategoriesController::class, 'destroy'])->name('categories.destroy');
         Route::put('/restore/{id}', [CategoriesController::class, 'restore'])->name('categories.restore');
         Route::put('/changeStatues/{id}', [CategoriesController::class, 'changeStatues'])->name('categories.changeStatues');
@@ -79,7 +79,7 @@ Route::group(['prefix' => 'admin/', 'middleware' => 'auth:admin'], function () {
         Route::get('/trashed', [ServicesController::class, 'trashed'])->name('services.trashed');
         Route::get('/{id}', [ServicesController::class, 'show'])->name('services.show');
         Route::post('/', [ServicesController::class, 'store'])->name('services.store');
-        Route::post('/{id}', [ServicesController::class, 'update'])->name('services.update');
+        Route::put('/{id}', [ServicesController::class, 'update'])->name('services.update');
         Route::delete('/{id}', [ServicesController::class, 'destroy'])->name('services.destroy');
         Route::put('/restore/{id}', [ServicesController::class, 'restore'])->name('services.restore');
         Route::put('/changeStatues/{id}', [ServicesController::class, 'changeStatues'])->name('services.changeStatues');
@@ -95,7 +95,7 @@ Route::group(['prefix' => 'admin/', 'middleware' => 'auth:admin'], function () {
         Route::get('/trashed', [ServiceProvidersController::class, 'trashed'])->name('serviceProviders.trashed');
         Route::get('/{id}', [ServiceProvidersController::class, 'show'])->name('serviceProviders.show');
         Route::post('/', [ServiceProvidersController::class, 'store'])->name('serviceProviders.store');
-        Route::post('/{id}', [ServiceProvidersController::class, 'update'])->name('serviceProviders.update');
+        Route::put('/{id}', [ServiceProvidersController::class, 'update'])->name('serviceProviders.update');
         Route::delete('/{id}', [ServiceProvidersController::class, 'destroy'])->name('serviceProviders.destroy');
         Route::put('/restore/{id}', [ServiceProvidersController::class, 'restore'])->name('serviceProviders.restore');
         Route::put('/changeStatues/{id}', [ServiceProvidersController::class, 'changeStatues'])->name('serviceProviders.changeStatues');

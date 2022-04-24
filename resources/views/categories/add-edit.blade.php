@@ -8,9 +8,12 @@ $flag=1;
 @include('layouts.success')
 @include('layouts.error')
 <form method="post" class="w-75 mx-auto mt-5 pb-3"
-    action="{{$flag ? route('categories.update') : route('categories.store')}}"
+    action="{{$flag ? url('admin/categories/'.$record->id) : route('categories.store')}}"
     enctype="multipart/form-data">
     {{csrf_field()}}
+    @if($flag)
+    @method('PUT')
+    @endif
     <div class="form-group">
         <label for="exampleFormControlSelect1"> Name EN</label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter EN Name" name = "name_en" value="{{$flag ? $record->name_en : old('name_en')}}" required>

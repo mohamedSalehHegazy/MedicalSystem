@@ -1,8 +1,16 @@
 @extends('layouts.app')
 @section('content')
+
                     <div class="row">
-                        <div class="col-10 m-1">
+                        <div class="col-5 m-1">
                             <a href="{{route('categories.create')}}" class="btn btn-success mb-4 mt-2"><i class = "fa fa-plus"></i> Add New </a>  
+                        </div>
+                        <div class="col-6">
+                            <!-- Actual search box -->
+                            <div class="form-group has-search">
+                                    <span class="fa fa-search form-control-feedback"></span>
+                                    <input type="text" id="tableSearch" class="form-control" placeholder="Search">
+                            </div>
                         </div>
                         @include('layouts.success')
                         @include('layouts.error')
@@ -24,13 +32,13 @@
                         <th scope="col">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="myTable">
                         <tr>
                         @foreach($records as $record)
                         <td>{{$record->id}}</td>
                         <td>{{$record->name_en}}</td>
                         <td>{{$record->name_ar}}</td>
-                        <td>{{$record->icon}}</td>
+                        <td><img src="{{$record->icon}}"></td>
                         <td>{{$record->parent_category}}</td>
                         <td>{{$record->need_delivery}}</td>
                         <td>{{$record->active}}</td>

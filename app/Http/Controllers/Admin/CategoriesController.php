@@ -28,7 +28,7 @@ class CategoriesController extends Controller
             return view($this->path.'.list', compact('records'));
         } catch (\Throwable $th) {
             Log::error($th);
-            return view('layouts.500');
+            return view('layouts.wrong');
         }
     }
 
@@ -49,7 +49,7 @@ class CategoriesController extends Controller
             }
         } catch (\Throwable $th) {
             Log::error($th);
-            return view('layouts.500');
+            return view('layouts.wrong');
         }
     }
 
@@ -72,11 +72,11 @@ class CategoriesController extends Controller
     public function store(CreateRequest $request)
     {
         try {
-            $record = Model::create($request->all());
+            Model::create($request->all());
             return redirect('admin/'.$this->path)->with('success','Created Successfully');
         } catch (\Throwable $th) {
             Log::error($th);
-            return view('layouts.500');
+            return view('layouts.wrong');
         }
     }
 
@@ -89,15 +89,15 @@ class CategoriesController extends Controller
     public function edit(Request $request)
     {
         try {
-           $data = Model::find($request->id);
-            if ($data){
+           $record = Model::find($request->id);
+            if ($record){
                 return view($this->path.'.add-edit',compact(['record']));
             }else {
                 return redirect('admin/'.$this->path)->with('error','Not Found');
             }
         } catch (\Throwable $th) {
             Log::error($th);
-            return view('layouts.404');
+            return view('layouts.wrong');
         }
     }
 
@@ -118,7 +118,7 @@ class CategoriesController extends Controller
             }
         } catch (\Throwable $th) {
             Log::error($th);
-            return view('layouts.500');
+            return view('layouts.wrong');
         }
     }
 
@@ -139,7 +139,7 @@ class CategoriesController extends Controller
             }
         } catch (\Throwable $th) {
             Log::error($th);
-            return view('layouts.500');
+            return view('layouts.wrong');
         }
     }
 
@@ -156,7 +156,7 @@ class CategoriesController extends Controller
             return view($this->path.'.list'.'/trashed', compact('records'));
         } catch (\Throwable $th) {
             Log::error($th);
-            return view('layouts.500');
+            return view('layouts.wrong');
         }
     }
 
@@ -177,7 +177,7 @@ class CategoriesController extends Controller
             }
         } catch (\Throwable $th) {
             Log::error($th);
-            return view('layouts.500');
+            return view('layouts.wrong');
         }
     }
 
@@ -200,7 +200,7 @@ class CategoriesController extends Controller
             }
         } catch (\Throwable $th) {
             Log::error($th);
-            return view('layouts.500');
+            return view('layouts.wrong');
         }
     }
 
