@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\CategoryCreateRequest  as UpdateRequest;
 use App\Http\Resources\Admin\CategoryListResource  as ListResource;
 use App\Http\Resources\Admin\CategorySingleResource  as SingleResource;
 use App\Models\Category  as Model;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -60,7 +61,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view($this->path.'.add-edit');
+        $categories = Category::all();
+        return view($this->path.'.add-edit',compact('categories'));
     }
 
     /**
@@ -76,10 +78,14 @@ class CategoriesController extends Controller
                 $file = $request->file('icon');
                 $image = uploads_img($file,'admin/uploads/categories/');
                 // dd($image);
+                // if($request->)
+                // dd($request->parent_id);
+                $parent_id = $request->parent_id??Null;
                 Model::create([
                 'icon'=>$image,
                 'name_en'=>$request->name_en,
                 'name_ar'=>$request->name_ar,
+                'parent_id'=>$request->parent_id,
             ]);
             return redirect('admin/'.$this->path)->with('success','Created Successfully');
         } catch (\Throwable $th) {

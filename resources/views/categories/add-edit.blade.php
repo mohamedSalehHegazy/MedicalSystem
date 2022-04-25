@@ -26,8 +26,21 @@ $flag=1;
         <label for="exampleFormControlSelect1"> Icon </label>
         <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "icon" value="{{$flag ? $record->icon : old('icon')}}" required>
     </div>
-   
- 
+
+    <div class="form-group">
+    <label for="exampleFormControlSelect1"> subCategory </label>
+    <select class="form-control" name="parent_id">
+        @foreach($categories as $category)
+        <option vlaue="">MainCategory</option>
+        <option value="{{ $category->id }}">{{ $category["name_".app()->getLocale()]  }}</option>
+        @endforeach
+
+        </optgroup>
+    </select>
+    </div>
+
+
+
     @if ($flag)
         <input type="hidden" value="{{$record->id}}" name="id">
     @endif
@@ -35,6 +48,6 @@ $flag=1;
         <div class="col-12 col-lg-10 ml-0 ml-lg-5">
             <button type="submit" class="btn btn-primary btn-block">{{$flag ? 'Update' : 'Add'}}</button>
         </div>
-    </div> 
+    </div>
 </form>
 @endsection
