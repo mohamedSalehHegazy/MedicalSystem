@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Log;
 class CategoriesController extends Controller
 {
     public $path = 'categories';
-    
+
     /**
     * Get All Records
     * @return \Illuminate\Http\JsonResponse
@@ -72,7 +72,15 @@ class CategoriesController extends Controller
     public function store(CreateRequest $request)
     {
         try {
-            Model::create($request->all());
+            if($request->hasFile('icon'))
+                $file = $request->file('icon');
+                $image = uploads_img($file,'admin/uploads/categories/');
+                // dd($image);
+                Model::create([
+                'icon'=>$image,
+                'name_en'=>$request->name_en,
+                'name_ar'=>$request->name_ar,
+            ]);
             return redirect('admin/'.$this->path)->with('success','Created Successfully');
         } catch (\Throwable $th) {
             Log::error($th);
