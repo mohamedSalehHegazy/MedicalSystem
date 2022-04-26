@@ -12,16 +12,14 @@ class Category extends Model
     protected $guarded = [];
 
 
-    public function service_povides()
+    public function serviceProvider()
     {
         return $this->hasMany(ServiceProvider::class,'category_id');
     }
 
     public function getIconAttribute($value)
     {
-        // return $value = asset('uploads/category/'.$value);
-        return storage_path('app/admin/uploads/categories/'.$value);
-
+        return $value = asset('uploads/categories/'.$value);
     }
 
 }

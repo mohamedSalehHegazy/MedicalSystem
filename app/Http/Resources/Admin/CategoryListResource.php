@@ -19,6 +19,7 @@ class CategoryListResource extends JsonResource
             'name_en' => $this->name_en,
             'name_ar' => $this->name_ar,
             'icon' => $this->icon,
+            'type' => $this->type,
             'parent_category' => $this->parent_id,
             'need_delivery' => $this->need_delivery ? true : false,
             'active' => $this->active ? true : false,

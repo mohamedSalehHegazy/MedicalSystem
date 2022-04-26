@@ -23,23 +23,19 @@ $flag=1;
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter AR Name" name = "name_ar" value="{{$flag ? $record->name_ar : old('name_ar')}}" required>
     </div>
     <div class="form-group">
-        <label for="exampleFormControlSelect1"> Icon </label>
-        <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "icon" value="{{$flag ? $record->icon : old('icon')}}" required>
+        <label for="exampleFormControlSelect1"> ICON </label>
+        <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "logo" value="{{$flag ? $record->icon : old('logo')}}" required>
     </div>
 
     <div class="form-group">
-    <label for="exampleFormControlSelect1"> subCategory </label>
+    <label for="exampleFormControlSelect1"> Sub Category </label>
     <select class="form-control" name="parent_id">
         @foreach($categories as $category)
-        <option vlaue="">MainCategory</option>
+        <option value=""> </option>
         <option value="{{ $category->id }}">{{ $category["name_".app()->getLocale()]  }}</option>
         @endforeach
-
-        </optgroup>
     </select>
     </div>
-
-
 
     @if ($flag)
         <input type="hidden" value="{{$record->id}}" name="id">

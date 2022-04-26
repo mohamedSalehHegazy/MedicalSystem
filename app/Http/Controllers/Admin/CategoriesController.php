@@ -74,19 +74,10 @@ class CategoriesController extends Controller
     public function store(CreateRequest $request)
     {
         try {
-            if($request->hasFile('icon'))
-                $file = $request->file('icon');
-                $image = uploads_img($file,'admin/uploads/categories/');
-                // dd($image);
-                // if($request->)
-                // dd($request->parent_id);
-                $parent_id = $request->parent_id??Null;
-                Model::create([
-                'icon'=>$image,
-                'name_en'=>$request->name_en,
-                'name_ar'=>$request->name_ar,
-                'parent_id'=>$request->parent_id,
-            ]);
+            if($request->hasFile('logo')){
+                $request['icon'] = uploadImage($request->file('logo'),$this->path);
+            }
+            Model::create($request->except('logo'));
             return redirect('admin/'.$this->path)->with('success','Created Successfully');
         } catch (\Throwable $th) {
             Log::error($th);
