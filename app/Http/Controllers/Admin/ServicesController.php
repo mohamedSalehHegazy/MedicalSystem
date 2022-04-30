@@ -22,8 +22,11 @@ class ServicesController extends Controller
     public function index()
     {
         try {
+            // dd('dd');
             $data = Model::latest()->get();
+            // dd($data);
             $records = ListResource::collection($data);
+            // dd($records);
             return view($this->path.'.list', compact('records'));
         } catch (\Throwable $th) {
             Log::error($th);

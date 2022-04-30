@@ -31,8 +31,8 @@ require __DIR__.'/auth.php';
 
 Route::group(['prefix' => 'admin/', 'middleware' => 'auth:admin'], function () {
 
-    /** 
-    * Categories 
+    /**
+    * Categories
     */
     Route::group(['prefix'=>'categories'], function() {
         Route::get('/', [CategoriesController::class, 'index'])->name('categories.index');
@@ -108,6 +108,6 @@ Route::group(['prefix' => 'admin/', 'middleware' => 'auth:admin'], function () {
         Route::get('/', [UserController::class, 'index'])->name('users.index');
         Route::put('/changeStatues/{id}', [UserController::class, 'changeStatues'])->name('users.changeStatues');
     });
-    
+
 });
 

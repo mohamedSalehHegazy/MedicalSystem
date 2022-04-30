@@ -7,6 +7,8 @@ use App\Http\Requests\Admin\ServiceProviderCreateRequest  as CreateRequest;
 use App\Http\Requests\Admin\ServiceProviderUpdateRequest  as UpdateRequest;
 use App\Http\Resources\Admin\ServiceProviderListResource  as ListResource;
 use App\Http\Resources\Admin\ServiceProviderSingleResource  as SingleResource;
+use App\Models\Category;
+use App\Models\Service;
 use App\Models\ServiceProvider  as Model;
 use Illuminate\Support\Facades\Log;
 
@@ -22,6 +24,7 @@ class ServiceProvidersController extends Controller
     public function index()
     {
         try {
+
             $data = Model::latest()->get();
             $records = ListResource::collection($data);
             return view($this->path.'.list', compact('records'));
@@ -59,7 +62,9 @@ class ServiceProvidersController extends Controller
      */
     public function create()
     {
-        return view($this->path.'.add-edit');
+        $categories = Category::get();
+
+        return view($this->path.'.add-edit',compact('categories'));
     }
 
     /**
@@ -71,8 +76,15 @@ class ServiceProvidersController extends Controller
     public function store(CreateRequest $request)
     {
         try {
-            $record = Model::create($request->all());
-            return redirect('/'.$this->path)->with('success','Created Successfully');
+
+            $request_data = $request->except(['logo']);
+            if($request->logo)
+            {
+                $request_data['logo'] = uploadImage($request->file('logo'),$this->path);
+            }
+            Model::create($request_data);
+            // return redirect('/'.$this->path)->with('success','Created Successfully');
+            return redirect()->route('serviceProviders.index')->with('success','Created Successfully');
         } catch (\Throwable $th) {
             Log::error($th);
             return view('layouts.500');
@@ -132,7 +144,7 @@ class ServiceProvidersController extends Controller
             $record = Model::find($id);
             if ($record){
                 $record->delete();
-                return redirect('/'.$this->path)->with('success','Deleted Successfully');
+                return redirect()->back();
             }else {
                 return redirect('/'.$this->path)->with('error','Not Found');
             }
@@ -193,7 +205,7 @@ class ServiceProvidersController extends Controller
             if ($record){
                 $record->active = !$record->active;
                 $record->save();
-                return redirect('/'.$this->path)->with('success','Statues Changed Successfully');
+                return redirect()->back();
             }else {
                 return redirect('/'.$this->path)->with('error','Not Found');
             }

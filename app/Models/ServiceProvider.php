@@ -28,10 +28,10 @@ class ServiceProvider extends Model
     {
         return $this->hasMany(Service::class,'service_provider_id');
     }
-    
+
     public function getLogoAttribute($value)
     {
-        return $value = asset('uploads/serviceProvider/'.$value);
+        return $value = asset('uploads/serviceProviders/'.$value);
     }
 
 }
