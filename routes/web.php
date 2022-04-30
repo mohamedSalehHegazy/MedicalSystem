@@ -91,7 +91,7 @@ Route::group(['prefix' => 'admin/', 'middleware' => 'auth:admin'], function () {
     Route::group(['prefix'=>'serviceProviders'], function() {
         Route::get('/', [ServiceProvidersController::class, 'index'])->name('serviceProviders.index');
         Route::get('/create', [ServiceProvidersController::class, 'create'])->name('serviceProviders.create');
-        Route::get('/edit', [ServiceProvidersController::class, 'edit'])->name('serviceProviders.edit');
+        Route::get('/edit/{id}', [ServiceProvidersController::class, 'edit'])->name('serviceProviders.edit');
         Route::get('/trashed', [ServiceProvidersController::class, 'trashed'])->name('serviceProviders.trashed');
         Route::get('/{id}', [ServiceProvidersController::class, 'show'])->name('serviceProviders.show');
         Route::post('/', [ServiceProvidersController::class, 'store'])->name('serviceProviders.store');

@@ -100,9 +100,11 @@ class ServiceProvidersController extends Controller
     public function edit($id)
     {
         try {
-           $data = Model::find($id);
-            if ($data){
-                return view($this->path.'.add-edit',compact(['record']));
+           $record = Model::find($id);
+           $categories = Category::get();
+        //    dd($record);
+            if ($record){
+                return view($this->path.'.add-edit',compact(['record','categories']));
             }else {
                 return redirect('/'.$this->path)->with('error','Not Found');
             }
@@ -120,10 +122,17 @@ class ServiceProvidersController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         try {
+            $request_data = $request->except(['logo']);
+            if($request->logo)
+            {
+                $request_data['logo'] = uploadImage($request->file('logo'),$this->path);
+            }
+
             $record = Model::find($id);
             if ($record){
-                $record->update($request->all());
-                return redirect('/'.$this->path)->with('success','Updated Successfully');
+                $record->update($request_data);
+                return redirect()->route('serviceProviders.index')->with('success','Updated Successfully');
+
             }else {
                 return redirect('/'.$this->path)->with('error','Not Found');
             }

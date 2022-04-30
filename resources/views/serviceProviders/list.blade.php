@@ -79,7 +79,7 @@
                             <div class="col-10 col-md-3">
                                 <!-- Edit Button -->
                                 <form method="post"
-                                    action= "{{route('serviceProviders.edit')}}"
+                                    action= "{{route('serviceProviders.edit',$record->id)}}"
                                     enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         @method('get')
