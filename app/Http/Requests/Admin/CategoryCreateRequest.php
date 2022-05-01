@@ -26,7 +26,7 @@ class CategoryCreateRequest extends FormRequest
         return [
             'name_en' => 'required',
             'name_ar' => 'required',
-            'icon' => 'required',
+            'logo' => 'required',
         ];
     }
 }

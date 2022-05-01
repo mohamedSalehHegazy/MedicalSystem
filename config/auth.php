@@ -46,7 +46,7 @@ return [
             'provider' => 'users',
         ],
         'admin'=> [
-            'driver' => 'jwt',
+            'driver' => 'session',
             'provider' => 'admins',
         ],
     ],
@@ -67,7 +67,6 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-
     'providers' => [
         'users' => [
             'driver' => 'eloquent',

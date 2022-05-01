@@ -27,7 +27,7 @@ class DeliveryCreateRequest extends FormRequest
             //
             'name'=>'required',
             'address'=>'required',
-            'phone'=>'required|unique',
+            'phone'=>'required|unique:deliveries,phone',
             'lat'=>'required',
             'long'=>'required',
 

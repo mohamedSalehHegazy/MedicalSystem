@@ -28,7 +28,7 @@ class ServiceProviderUpdateRequest extends FormRequest
             'name_ar'=>'required',
             'name_en'=>'required',
             'address'=>'required',
-            'logo'=>'required',
+            // 'logo'=>'required',
             'lat'=>'required',
             'long'=>'required',
             'category_id'=>'required',

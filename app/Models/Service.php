@@ -16,5 +16,9 @@ class Service extends Model
     {
         return $this->belongsTo(ServiceProvider::class,'service_provider_id');
     }
+       public function getImageAttribute($value)
+    {
+        return $value = asset('uploads/services/'.$value);
+    }
 
 }

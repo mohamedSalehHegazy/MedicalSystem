@@ -14,10 +14,10 @@ class CategorySingleResource extends JsonResource
      */
     public function toArray($request)
     {
-        $name = "name_".app()->getLocale();
         return [
             'id' => $this->id,
-            'name' => $this->$name,
+            'name_en' => $this->name_en,
+            'name_ar' => $this->name_ar,
             'icon' => $this->icon,
             'need_delivery' => $this->need_delivery ? true : false,
             'active' => $this->active ? true : false,

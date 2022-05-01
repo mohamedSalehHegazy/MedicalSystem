@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\enum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,6 +21,7 @@ class CreateCategoriesTable extends Migration
             $table->string('icon');
             $table->boolean('need_delivery')->default(0);
             $table->boolean('active')->default(1);
+            $table->string('type')->default(enum::CategoryType['regular']);
             $table->unsignedInteger('parent_id')->nullable();
             $table->timestamps();
             $table->softDeletes();

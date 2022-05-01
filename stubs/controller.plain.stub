@@ -3,7 +3,6 @@
 namespace {{ namespace }};
 
 use {{ rootNamespace }}Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Models\  as Model;
@@ -11,10 +10,11 @@ use App\Http\Resources\  as ListResource;
 use App\Http\Resources\  as SingleResource;
 use App\Http\Requests\  as CreateRequest;
 use App\Http\Requests\  as UpdateRequest;
-use Illuminate\Http\Response;
 
 class {{ class }} extends Controller
 {
+    public $path = 'categories';
+    
     /**
     * Get All Records
     * @return \Illuminate\Http\JsonResponse
@@ -23,16 +23,12 @@ class {{ class }} extends Controller
     public function index()
     {
         try {
-            $records = Model::latest()->get();
-            return response()->json([
-                'success' => true,
-                'data' => ListResource::collection($records)
-            ]);
+            $data = Model::latest()->get();
+            $records = ListResource::collection($data);
+            return view($this->path.'.list', compact('records'));
         } catch (\Throwable $th) {
             Log::error($th);
-            return response()->json([
-                'message' => 'Some Thing Went Wrong !'
-            ],response::HTTP_INTERNAL_SERVER_ERROR);
+            return view('layouts.500');
         }
     }
 
@@ -44,23 +40,27 @@ class {{ class }} extends Controller
     public function show($id)
     {
         try {
-            $record = Model::find($id);
-            if ($record){
-                return response()->json([
-                    'success' => true,
-                    'data' => new SingleResource($record)
-                ]);
+            $data = Model::find($id);
+            if ($data){
+            $record = new SingleResource($data);
+                return view($this->path.'.show',compact(['record']));
             }else {
-               return response()->json([
-                   'message' => 'Not Found !'
-               ],response::HTTP_BAD_REQUEST);
+                 return redirect('/'.$this->path)->with('error','Not Found');
             }
         } catch (\Throwable $th) {
             Log::error($th);
-            return response()->json([
-                'message' => 'Some Thing Went Wrong !'
-            ],response::HTTP_INTERNAL_SERVER_ERROR);
+            return view('layouts.500');
         }
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view($this->path.'.add-edit');
     }
 
     /**
@@ -72,17 +72,32 @@ class {{ class }} extends Controller
     public function store(CreateRequest $request)
     {
         try {
-            $record = Model::create([
-              //type model fields ex('name' => $request->name)
-            ]);
-            return response()->json([
-                'message' => 'Created Successfully',
-            ]);
+            $record = Model::create($request->all());
+            return redirect('/'.$this->path)->with('success','Created Successfully');
         } catch (\Throwable $th) {
             Log::error($th);
-            return response()->json([
-                'message' => 'Some Thing Went Wrong !'
-            ],response::HTTP_INTERNAL_SERVER_ERROR);
+            return view('layouts.500');
+        }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        try {
+           $data = Model::find($id);
+            if ($data){
+                return view($this->path.'.add-edit',compact(['record']));
+            }else {
+                return redirect('/'.$this->path)->with('error','Not Found');
+            }
+        } catch (\Throwable $th) {
+            Log::error($th);
+            return view('layouts.500');
         }
     }
 
@@ -95,23 +110,15 @@ class {{ class }} extends Controller
     {
         try {
             $record = Model::find($id);
-             if ($record){
-                $record->update([
-                    //type model fields ex('name' => $request->name)
-                ]);
-                return response()->json([
-                    'message' => 'Updated Successfully',
-                ]);
+            if ($record){
+                $record->update($request->all());
+                return redirect('/'.$this->path)->with('success','Updated Successfully');
             }else {
-               return response()->json([
-                   'message' => 'Not Found !'
-               ],response::HTTP_BAD_REQUEST);
+                return redirect('/'.$this->path)->with('error','Not Found');
             }
         } catch (\Throwable $th) {
             Log::error($th);
-            return response()->json([
-                'message' => 'Some Thing Went Wrong !'
-            ],response::HTTP_INTERNAL_SERVER_ERROR);
+            return view('layouts.500');
         }
     }
 
@@ -126,19 +133,30 @@ class {{ class }} extends Controller
             $record = Model::find($id);
             if ($record){
                 $record->delete();
-                return response()->json([
-                    'message' => 'Deleted Successfully',
-                ]);
+                return redirect('/'.$this->path)->with('success','Deleted Successfully');
             }else {
-               return response()->json([
-                   'message' => 'Not Found !'
-               ],response::HTTP_BAD_REQUEST);
+                return redirect('/'.$this->path)->with('error','Not Found');
             }
         } catch (\Throwable $th) {
             Log::error($th);
-            return response()->json([
-                'message' => 'Some Thing Went Wrong !'
-            ],response::HTTP_INTERNAL_SERVER_ERROR);
+            return view('layouts.500');
+        }
+    }
+
+
+    /**
+    * List Trashed Records
+    * @return \Illuminate\Http\JsonResponse
+    */
+    public function trashed()
+    {
+        try {
+            $data = Model::onlyTrashed()->get();
+            $records = ListResource::collection($data);
+            return view($this->path.'.list'.'/trashed', compact('records'));
+        } catch (\Throwable $th) {
+            Log::error($th);
+            return view('layouts.500');
         }
     }
 
@@ -153,19 +171,13 @@ class {{ class }} extends Controller
             $record = Model::onlyTrashed()->find($id);
             if ($record){
                 $record->restore();
-                return response()->json([
-                    'message' => 'Restored Successfully',
-                ]);
+                return redirect('/'.$this->path.'/trashed')->with('success','Restored Successfully');
             }else {
-               return response()->json([
-                   'message' => 'Not Found !'
-               ],response::HTTP_BAD_REQUEST);
+                return redirect('/'.$this->path)->with('error','Not Found');
             }
         } catch (\Throwable $th) {
             Log::error($th);
-            return response()->json([
-                'message' => 'Some Thing Went Wrong !'
-            ],response::HTTP_INTERNAL_SERVER_ERROR);
+            return view('layouts.500');
         }
     }
 
@@ -175,7 +187,6 @@ class {{ class }} extends Controller
     * @param $id
     * @return \Illuminate\Http\JsonResponse
     */
-
     public function changeStatues($id)
     {
         try {
@@ -183,19 +194,13 @@ class {{ class }} extends Controller
             if ($record){
                 $record->active = !$record->active;
                 $record->save();
-                return response()->json([
-                    'message' => 'Statues Changed Successfully',
-                ]);
+                return redirect('/'.$this->path)->with('success','Statues Changed Successfully');
             }else {
-               return response()->json([
-                   'message' => 'Not Found !'
-               ],response::HTTP_BAD_REQUEST);
+                return redirect('/'.$this->path)->with('error','Not Found');
             }
         } catch (\Throwable $th) {
             Log::error($th);
-            return response()->json([
-                'message' => 'Some Thing Went Wrong !'
-            ],response::HTTP_INTERNAL_SERVER_ERROR);
+            return view('layouts.500');
         }
     }
 }
