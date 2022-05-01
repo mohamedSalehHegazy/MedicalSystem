@@ -18,7 +18,7 @@ class Service extends Model
     }
        public function getImageAttribute($value)
     {
-        return $value = asset('uploads/service/'.$value);
+        return $value = asset('uploads/services/'.$value);
     }
 
 }

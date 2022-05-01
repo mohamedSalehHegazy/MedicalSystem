@@ -76,6 +76,7 @@ Route::group(['prefix' => 'admin/', 'middleware' => 'auth:admin'], function () {
     Route::group(['prefix'=>'services'], function() {
         Route::get('/', [ServicesController::class, 'index'])->name('services.index');
         Route::get('/create', [ServicesController::class, 'create'])->name('services.create');
+        Route::get('/edit/{id}', [ServicesController::class, 'edit'])->name('services.edit');
         Route::get('/trashed', [ServicesController::class, 'trashed'])->name('services.trashed');
         Route::get('/{id}', [ServicesController::class, 'show'])->name('services.show');
         Route::post('/', [ServicesController::class, 'store'])->name('services.store');

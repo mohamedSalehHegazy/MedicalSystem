@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\ServiceUpdateRequest  as UpdateRequest;
 use App\Http\Resources\Admin\ServiceListResource  as ListResource;
 use App\Http\Resources\Admin\ServiceSingleResource  as SingleResource;
 use App\Models\Service as Model;
+use App\Models\ServiceProvider;
 use Illuminate\Support\Facades\Log;
 
 class ServicesController extends Controller
@@ -62,7 +63,8 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        return view($this->path.'.add-edit');
+        $serviceProviders = ServiceProvider::get();
+        return view($this->path.'.add-edit',compact('serviceProviders'));
     }
 
     /**
@@ -74,8 +76,13 @@ class ServicesController extends Controller
     public function store(CreateRequest $request)
     {
         try {
-            $record = Model::create($request->all());
-            return redirect('/'.$this->path)->with('success','Created Successfully');
+            $request_data = $request->except(['image']);
+            if($request->image)
+            {
+                $request_data['image'] = uploadImage($request->file('image'),$this->path);
+            }
+            Model::create($request_data);
+            return redirect()->route('services.index')->with('success','Created Successfully');
         } catch (\Throwable $th) {
             Log::error($th);
             return view('layouts.500');
@@ -91,9 +98,11 @@ class ServicesController extends Controller
     public function edit($id)
     {
         try {
-           $data = Model::find($id);
-            if ($data){
-                return view($this->path.'.add-edit',compact(['record']));
+           $record = Model::find($id);
+        $serviceProviders = ServiceProvider::get();
+
+            if ($record){
+                return view($this->path.'.add-edit',compact(['record','serviceProviders']));
             }else {
                 return redirect('/'.$this->path)->with('error','Not Found');
             }
@@ -111,9 +120,14 @@ class ServicesController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         try {
+            $request_data = $request->except(['image']);
+            if($request->image)
+            {
+                $request_data['image'] = uploadImage($request->file('image'),$this->path);
+            }
             $record = Model::find($id);
             if ($record){
-                $record->update($request->all());
+                $record->update($request_data);
                 return redirect('/'.$this->path)->with('success','Updated Successfully');
             }else {
                 return redirect('/'.$this->path)->with('error','Not Found');
@@ -135,7 +149,7 @@ class ServicesController extends Controller
             $record = Model::find($id);
             if ($record){
                 $record->delete();
-                return redirect('/'.$this->path)->with('success','Deleted Successfully');
+                return redirect()->back()->with('success','Deleted Successfully');
             }else {
                 return redirect('/'.$this->path)->with('error','Not Found');
             }
@@ -196,7 +210,7 @@ class ServicesController extends Controller
             if ($record){
                 $record->active = !$record->active;
                 $record->save();
-                return redirect('/'.$this->path)->with('success','Statues Changed Successfully');
+                return redirect()->back()->with('success','Statues Changed Successfully');
             }else {
                 return redirect('/'.$this->path)->with('error','Not Found');
             }

@@ -41,6 +41,8 @@ $flag=1;
     <div class="form-group">
         <label for="exampleFormControlSelect1"> Logo </label>
         <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "logo" value="{{$flag ? $record->logo : old('logo')}}" required>
+        <img src="{{ $flag ? $record->logo : old('logo') }}" height="200px" width="200px" >
+
     </div>
 
     <div class="form-group">

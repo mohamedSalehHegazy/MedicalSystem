@@ -29,7 +29,7 @@ class ServiceUpdateRequest extends FormRequest
             'name_ar'=>'required',
             'description_en'=>'required',
             'description_ar'=>'required',
-            'image'=>'required',
+            // 'image'=>'required',
             'price'=>'required',
             'service_provider_id'=>'required',
         ];
